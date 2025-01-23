@@ -5,29 +5,34 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the repository
-                bat 'git clone -b main https://github.com/Tanish-pat/jktut .'
+                git branch: 'main', url: 'https://github.com/tanish-pat/jktut'
             }
         }
-
-        stage('Install Dependencies') {
+        stage('Setup Venv') {
             steps {
                 // Set up Python environment and install dependencies
                 bat 'python -m venv venv'
-                bat 'venv\\Scripts\\pip install -r requirements.txt'
+                bat 'venv\\Scripts\\activate'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                // Set up Python environment and install dependencies
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Run pytest
-                bat 'venv\\Scripts\\pytest test\\test_app.py'
+                bat 'python test_app.py'
             }
         }
 
         stage('Deploy') {
             steps {
                 // Run the Flask app (you may replace this with deployment-specific steps)
-                bat 'venv\\Scripts\\python app.py'
+                bat 'python app.py'
             }
         }
     }
