@@ -9,11 +9,12 @@ pipeline {
             }
         }
         stage('Setup Venv') {
-            steps {
-                // Set up Python environment and install dependencies
-                sh 'python -m venv venv'
-                sh 'venv\\Scripts\\activate'
+          steps {
+            script {
+              sh 'C:/Program Files/Git/bin/sh.exe -c "python -m venv venv"'
+              sh 'C:/Program Files/Git/bin/sh.exe -c "source venv/Scripts/activate"' 
             }
+          }
         }
         stage('Install Dependencies') {
             steps {
