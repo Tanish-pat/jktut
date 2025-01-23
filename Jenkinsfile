@@ -10,21 +10,6 @@ pipeline {
             steps {
                 // Clone the repository
                 git branch: 'main', url: 'https://github.com/tanish-pat/jktut'
-<<<<<<< HEAD
-            }
-        }
-        stage('Setup Venv') {
-            steps {
-                // Set up Python environment and install dependencies
-                bat 'python -m venv venv'
-                bat 'venv\\Scripts\\activate'
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                // Set up Python environment and install dependencies
-                bat 'pip install -r requirements.txt'
-=======
             }
         }
         stage('Setup Virtual Environment') {
@@ -41,33 +26,19 @@ pipeline {
                 pip install --upgrade pip
                 pip install -r requirements.txt
                 """
->>>>>>> 27f658d3797bcac5b5439ae5f149e658a6c5179d
             }
         }
         stage('Run Tests') {
             steps {
-<<<<<<< HEAD
-                // Run pytest
-                bat 'python test_app.py'
-=======
                 // Activate venv and run tests
                 bat """
                 call ${VENV_DIR}\\Scripts\\activate
                 python test_app.py
                 """
->>>>>>> 27f658d3797bcac5b5439ae5f149e658a6c5179d
             }
         }
         stage('Deploy') {
             steps {
-<<<<<<< HEAD
-                // Run the Flask app (you may replace this with deployment-specific steps)
-                bat 'python app.py'
-            }
-        }
-    }
-}
-=======
                 // Activate venv and deploy Flask app
                 bat """
                 call ${VENV_DIR}\\Scripts\\activate
@@ -92,4 +63,3 @@ pipeline {
         }
     }
 }
->>>>>>> 27f658d3797bcac5b5439ae5f149e658a6c5179d
