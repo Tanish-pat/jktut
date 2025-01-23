@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Run the Flask app (you may replace this with deployment-specific steps)
-                bat 'python app.py'
+                bat 'python.exe app.py'
             }
         }
     }
