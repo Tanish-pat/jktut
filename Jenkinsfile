@@ -1,37 +1,38 @@
 pipeline {
-    agent {
-        docker {
-            image 'ubuntu:latest' # Use a suitable Ubuntu image
-        }
-    }
+    agent any
 
     stages {
         stage('Clone Repository') {
             steps {
+                // Clone the repository
                 git branch: 'main', url: 'https://github.com/Tanish-pat/jktut'
             }
         }
         stage('Setup Venv') {
             steps {
-                sh 'python3 -m venv venv' 
-                sh 'source venv/bin/activate'
+                // Set up Python environment and install dependencies
+                bat 'python3 -m venv venv'
+                bat 'venv\\Scripts\\activate'
             }
         }
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                // Set up Python environment and install dependencies
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'python test_app.py'
+                // Run pytest
+                bat 'python test_app.py'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'python app.py' 
+                // Run the Flask app (you may replace this with deployment-specific steps)
+                bat 'python app.py'
             }
         }
     }
