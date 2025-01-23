@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the repository
-                git branch: 'main', url: 'https://github.com/Tanish-pat/jktut'
+                git branch: 'main', url: 'https://github.com/tanish-pat/jktut'
             }
         }
         stage('Setup Venv') {
