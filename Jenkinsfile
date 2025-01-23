@@ -8,12 +8,16 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Tanish-pat/jktut'
             }
         }
-
-        stage('Install Dependencies') {
+        stage('Setup Venv') {
             steps {
                 // Set up Python environment and install dependencies
                 bat 'python -m venv venv'
                 bat 'venv\\Scripts\\activate'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                // Set up Python environment and install dependencies
                 bat 'pip install -r requirements.txt'
             }
         }
@@ -21,15 +25,13 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Run pytest
-                bat 'venv\\Scripts\\activate'
-                bat 'python test\\test_app.py'
+                bat 'python test_app.py'
             }
         }
 
         stage('Deploy') {
             steps {
                 // Run the Flask app (you may replace this with deployment-specific steps)
-                bat 'venv\\Scripts\\activate'
                 bat 'python app.py'
             }
         }
