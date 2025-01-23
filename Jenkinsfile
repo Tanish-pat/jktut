@@ -11,23 +11,23 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Set up Python environment and install dependencies
-                'python -m venv venv'
-                'venv\\Scripts\\pip install -r requirements.txt'
+                // Set up Python environment
+                sh 'python -m venv venv'
+                sh './venv/Scripts/pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Run pytest
-                'venv\\Scripts\\pytest test\\test_app.py'
+                sh './venv/Scripts/pytest test/test_app.py'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Run the Flask app (you may replace this with deployment-specific steps)
-                'venv\\Scripts\\python app.py'
+                // Run the Flask app (replace with actual deployment steps)
+                sh 'python app.py'
             }
         }
     }
