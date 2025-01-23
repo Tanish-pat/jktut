@@ -11,7 +11,7 @@ pipeline {
         stage('Setup Venv') {
             steps {
                 // Set up Python environment and install dependencies
-                #!/bin/bash
+                bat '#!/bin/bash'
                 bat 'python -m venv venv'
                 bat 'venv\\Scripts\\activate'
             }
