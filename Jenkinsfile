@@ -25,14 +25,14 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Run pytest
-                bat 'python test_app.py'
+                bat 'python3 test_app.py'
             }
         }
 
         stage('Deploy') {
             steps {
                 // Run the Flask app (you may replace this with deployment-specific steps)
-                bat 'python app.py'
+                bat 'python3 app.py'
             }
         }
     }
