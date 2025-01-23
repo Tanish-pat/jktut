@@ -9,12 +9,11 @@ pipeline {
             }
         }
         stage('Setup Venv') {
-          steps {
-            script {
-              bat 'python -m venv venv'
-              bat './venv/Scripts/activate' 
+            steps {
+                // Set up Python environment and install dependencies
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\activate'
             }
-          }
         }
         stage('Install Dependencies') {
             steps {
