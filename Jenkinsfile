@@ -11,7 +11,8 @@ pipeline {
         stage('Setup Venv') {
             steps {
                 // Set up Python environment and install dependencies
-                bat 'python3 -m venv venv'
+                #!/bin/bash
+                bat 'python -m venv venv'
                 bat 'venv\\Scripts\\activate'
             }
         }
@@ -25,14 +26,14 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Run pytest
-                bat 'python3 test_app.py'
+                bat 'python test_app.py'
             }
         }
 
         stage('Deploy') {
             steps {
                 // Run the Flask app (you may replace this with deployment-specific steps)
-                bat 'python3 app.py'
+                bat 'python app.py'
             }
         }
     }
