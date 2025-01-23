@@ -16,7 +16,11 @@ pipeline {
                 bat 'venv\\Scripts\\pip install -r requirements.txt'
             }
         }
-
+        stage('Check Python') {
+            steps {
+                bat 'python --version'
+            }
+        }
         stage('Run Tests') {
             steps {
                 // Run pytest
